@@ -19,13 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('articles', 'ArticleController@index');
-// Route::get('articles/{article}', 'ArticleController@show');
-// Route::post('articles', 'ArticleController@store');
-// Route::put('articles/{article}', 'ArticleController@update');
-// Route::delete('articles/{article}', 'ArticleController@destroy');
-
-Route::resource('articles', 'ArticlesController');
+Route::get('articles/paginate', 'ArticlesController@paginate');
+Route::get('articles', 'ArticlesController@index');
+Route::get('articles/{article}', 'ArticlesController@show');
+Route::post('articles', 'ArticlesController@store');
+Route::put('articles/{article}', 'ArticlesController@update');
+Route::delete('articles/{article}', 'ArticlesController@destroy');
+// Route::get('articles/paginate', 'ArticlesController@paginate');
 
 
 

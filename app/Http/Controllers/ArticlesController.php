@@ -14,7 +14,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return Article::select('id', 'title', 'created_at', 'category_id')->with('category')->take(5)->get()->toJson();
+        return Article::select('id', 'title', 'created_at', 'category_id')->with('category')->get()->toJson();
     }
 
     /**
@@ -89,5 +89,16 @@ class ArticlesController extends Controller
     {
         $article->delete();
         return response()->json(null, 204);
+    }
+
+    /**
+     * Returns chunks of articles from storage.
+     *
+     * @param  int  $articlesCount
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate($articlesCount = 6) {
+        return Article::paginate($articlesCount);
+
     }
 }
