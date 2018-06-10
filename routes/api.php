@@ -25,7 +25,6 @@ Route::get('articles/{article}', 'ArticlesController@show');
 Route::post('articles', 'ArticlesController@store');
 Route::put('articles/{article}', 'ArticlesController@update');
 Route::delete('articles/{article}', 'ArticlesController@destroy');
-// Route::get('articles/paginate', 'ArticlesController@paginate');
 
 
 

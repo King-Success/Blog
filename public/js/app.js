@@ -55921,12 +55921,31 @@ function matchDispatchToProps(dispatch) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export PAGINATED_ARTICLES */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return selectUser; });
+/* unused harmony export fetchPaginatedArticles */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//This houses all of my action creators
+
+
+
+var PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
+
 var selectUser = function selectUser(user) {
     console.log("You clicked on user: ", user.first);
     return {
         type: 'USER_SELECTED',
         payload: user
+    };
+};
+
+var fetchPaginatedArticles = function fetchPaginatedArticles() {
+    var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/articles/paginate');
+
+    return {
+        type: PAGINATED_ARTICLES,
+        payload: request
     };
 };
 
