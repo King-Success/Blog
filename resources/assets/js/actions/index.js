@@ -1,5 +1,4 @@
 //This houses all of my action creators
-
 import axios from 'axios';
 
 export const PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';

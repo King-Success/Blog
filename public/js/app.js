@@ -6958,7 +6958,6 @@ module.exports = getEventCharCode;
 //This houses all of my action creators
 
 
-
 var PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
 
 var selectUser = function selectUser(user) {
@@ -56899,63 +56898,505 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * */
 
 var Index = function (_Component) {
-    _inherits(Index, _Component);
+	_inherits(Index, _Component);
 
-    function Index() {
-        _classCallCheck(this, Index);
+	function Index() {
+		_classCallCheck(this, Index);
 
-        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
-    }
+		return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
+	}
 
-    _createClass(Index, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.props.fetchPaginatedArticles();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            //While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is something to show for.
-            if (!this.props.paginatedArticles) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    'Loading...'
-                );
-            }
-            // console.log(this.props.paginatedArticles);
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    null,
-                    this.props.paginatedArticles.map(function (article) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'li',
-                            { key: article.id },
-                            article.title
-                        );
-                    })
-                )
-            );
-        }
-    }]);
+	_createClass(Index, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.props.fetchPaginatedArticles();
+		}
+	}, {
+		key: 'mapArticles',
+		value: function mapArticles() {
+			return this.props.paginatedArticles.map(function (article) {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'article',
+						{ className: 'post post-1-1' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'post-content with-background' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'h2',
+								{ className: 'post-title' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'a',
+									{ href: 'blog-single-post-sidebar-right.html' },
+									article.title
+								)
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'post-info' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'span',
+									{ className: 'post-date' },
+									article.created_at
+								),
+								', in ',
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'span',
+									{ className: 'post-category' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'a',
+										{ href: '#' },
+										article.category.name
+									)
+								),
+								', ',
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'span',
+									{ className: 'post-tags' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'span',
+										null,
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'a',
+											{ href: '#', className: 'post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white' },
+											'Review'
+										)
+									)
+								)
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'a',
+								{ href: '#', className: 'read-more' },
+								'Read More \u2192'
+							)
+						)
+					)
+				);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			// While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
+			// something to show for.
+			if (!this.props.paginatedArticles) {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					null,
+					'Loading...'
+				);
+			}
 
-    return Index;
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'wrapper reveal-side-navigation' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'wrapper-inner' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'header',
+						{ className: 'header header-relative header-fixed-on-mobile nav-dark', 'data-bkg-threshold': '100', 'data-sticky-threshold': '0' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'header-inner' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'row nav-bar' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'div',
+									{ className: 'column width-12 nav-bar-inner' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'div',
+										{ className: 'logo' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'logo-inner' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: 'index.html' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
+											),
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: 'index.html' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo.png', alt: 'Faulkner Logo' })
+											)
+										)
+									),
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'nav',
+										{ className: 'navigation nav-block primary-navigation nav-right sub-menu-indicator' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'ul',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'li',
+												null,
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'a',
+													{ href: 'index.html' },
+													'Demos'
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'content clearfix' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'section-block clearfix pt-0 pb-0 bkg-grey-ultralight' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'row' },
+								this.mapArticles()
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'section-block pagination-3 bkg-grey-ultralight' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'row' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'div',
+									{ className: 'column width-10 offset-1' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'ul',
+										null,
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ className: 'pagination-previous icon-left-open', href: '#' },
+												'Older'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ className: 'current', href: '#' },
+												'1'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: '#' },
+												'2'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: '#' },
+												'3'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: '#' },
+												'4'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: '#' },
+												'5'
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ className: 'pagination-next disabled', href: '#' },
+												'Newer'
+											)
+										)
+									)
+								)
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'footer',
+						{ className: 'footer footer-light with-border' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'footer-top' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'row flex' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'div',
+									{ className: 'column width-9' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'div',
+										{ className: 'row two-columns-on-tablet' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'column width-3' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'div',
+												{ className: 'widget' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'h3',
+													{ className: 'widget-title mb-30' },
+													'Product'
+												),
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'ul',
+													null,
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'About us'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Careers'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Press'
+														)
+													)
+												)
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'column width-3' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'div',
+												{ className: 'widget' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'h3',
+													{ className: 'widget-title mb-30' },
+													'Company'
+												),
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'ul',
+													null,
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Overview'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Features'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Pricing'
+														)
+													)
+												)
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'column width-3' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'div',
+												{ className: 'widget' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'h3',
+													{ className: 'widget-title mb-30' },
+													'Resources'
+												),
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'ul',
+													null,
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'News'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Documentation'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Faq'
+														)
+													)
+												)
+											)
+										),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'column width-3' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'div',
+												{ className: 'widget' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'h3',
+													{ className: 'widget-title mb-30' },
+													'Contact'
+												),
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+													'ul',
+													null,
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Email us'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Tweet Faulkner'
+														)
+													),
+													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'li',
+														null,
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+															'a',
+															{ href: '#' },
+															'Visit the office'
+														)
+													)
+												)
+											)
+										)
+									)
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'div',
+									{ className: 'column width-3' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'div',
+										{ className: 'widget right left-on-mobile' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'div',
+											{ className: 'footer-logo' },
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: 'index.html' },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
+											)
+										)
+									)
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'footer-bottom' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'row' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'div',
+									{ className: 'column width-12' },
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'div',
+										{ className: 'footer-bottom-inner' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'p',
+											{ className: 'copyright pull-left clear-float-on-mobile' },
+											'\xA9 ThemeMountain. All Rights Reserved.'
+										),
+										' ',
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'a',
+											{ href: '#', className: 'scroll-to-top pull-right clear-on-mobile', 'data-no-hide': true },
+											'Back Top'
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Index;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 // "state.activeUser" is set in reducers/index.js
 
 
 function mapStateToProps(state) {
-    return {
-        paginatedArticles: state.paginatedArticles.data
-    };
+	return {
+		paginatedArticles: state.paginatedArticles.data
+	};
 }
 
 function mapDispatchToProps(dispatch) {
-    return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({ fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["b" /* fetchPaginatedArticles */] }, dispatch);
+	return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({ fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["b" /* fetchPaginatedArticles */] }, dispatch);
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(Index));
