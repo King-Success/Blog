@@ -57150,7 +57150,7 @@ var Index = function (_Component) {
 
 
 function mapStateToProps(state) {
-	// console.log(state);
+	console.log(state);
 	return {
 		paginatedArticles: state.paginatedArticles.data
 	};
@@ -57193,18 +57193,18 @@ function mapDispatchToProps(dispatch) {
 var INITIAL_STATE = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-  var action = arguments[1];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+    var action = arguments[1];
 
-  console.log(action);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_index__["b" /* SELECTED_ARTICLE */]:
-      return action.payload.data;
+    //   console.log(action);
+    switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_index__["b" /* SELECTED_ARTICLE */]:
+            return action.payload.data;
 
-    default:
-      return state;
-  }
-  return state;
+        default:
+            return state;
+    }
+    return state;
 });
 
 /***/ })

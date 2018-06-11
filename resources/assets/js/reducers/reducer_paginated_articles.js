@@ -6,7 +6,7 @@ export default function (state = INITIAL_STATE, action) {
     switch(action.type) {
         case PAGINATED_ARTICLES:
           return action.payload.data;
-          
+
         default:
           return state;
     }

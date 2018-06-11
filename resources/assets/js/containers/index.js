@@ -187,7 +187,7 @@ class Index extends Component {
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
-	// console.log(state);
+	console.log(state);
     return {
         paginatedArticles: state.paginatedArticles.data
     };
