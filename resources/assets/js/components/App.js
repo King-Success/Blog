@@ -5,10 +5,6 @@ import Articles from '../containers/index';
 
 const App = () => (
     <div>
-        <h2>User List</h2>
-        <UserList />
-        <hr />
-        <h2>ARTICLES</h2>
         <Articles />
     </div>
 );
