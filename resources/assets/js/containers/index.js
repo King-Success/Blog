@@ -12,10 +12,7 @@ class Index extends Component {
         this.props.fetchPaginatedArticles();
     }
     render() {
-    //     if (!this.props.user) {
-    //         return (<div>Select a user...</div>);
-    //     }
-
+        //While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is something to show for.
             if(!this.props.paginatedArticles) {
                 return (
                     <div>Loading...</div>

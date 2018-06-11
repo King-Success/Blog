@@ -56915,10 +56915,7 @@ var Index = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            //     if (!this.props.user) {
-            //         return (<div>Select a user...</div>);
-            //     }
-
+            //While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is something to show for.
             if (!this.props.paginatedArticles) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',

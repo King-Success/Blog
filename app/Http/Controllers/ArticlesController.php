@@ -98,7 +98,7 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function paginate($articlesCount = 6) {
-        return Article::paginate($articlesCount);
+        return Article::with('category')->paginate($articlesCount);
 
     }
 }
