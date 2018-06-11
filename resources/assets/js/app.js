@@ -18,11 +18,9 @@ import ReactDOM from "react-dom";
 import {Provider} from 'react-redux';
 import reducers from './reducers'
 import {createStore, applyMiddleware} from 'redux';
-//import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
-//import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import App from './components/App';
+import { Router, browserHistory } from 'react-router';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
@@ -32,7 +30,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <App />
+        <Router history={browserHistory} />
     </Provider>,
     document.getElementById('app')
 );
