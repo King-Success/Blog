@@ -16,7 +16,7 @@ export const fetchPaginatedArticles = () => {
     const request = axios.get('/api/articles/paginate');
 
     return {
-        type: PAGINATED_ARTICLES, 
+        type: 'PAGINATED_ARTICLES', 
         payload: request
     };
 }

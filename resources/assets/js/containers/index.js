@@ -1,31 +1,49 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { fetchPaginatedArticles } from '../actions/index';
 
 /*
  * We need "if(!this.props.user)" because we set state to null by default
  * */
 
 class Index extends Component {
-    // render() {
+    componentWillMount() {
+        this.props.fetchPaginatedArticles();
+    }
+    render() {
     //     if (!this.props.user) {
     //         return (<div>Select a user...</div>);
     //     }
-    //     return (
-    //         <div>
-    //             <img src={this.props.user.thumbnail} />
-    //             <h2>{this.props.user.first} {this.props.user.last}</h2>
-    //             <h3>Age: {this.props.user.age}</h3>
-    //             <h3>Description: {this.props.user.description}</h3>
-    //         </div>
-    //     );
-    // }
+
+            if(!this.props.paginatedArticles) {
+                return (
+                    <div>Loading...</div>
+                );
+            }
+    // console.log(this.props.paginatedArticles);
+        return (
+           
+            <div>
+                 <ul>
+                     { this.props.paginatedArticles.map( article => {
+                        return <li key={article.id}>{ article.title }</li>
+                    })} 
+                </ul> 
+            </div>
+        );
+    }
 }
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
     return {
-        user: state.activeUser
+        paginatedArticles: state.paginatedArticles.data
     };
 }
 
-export default connect(mapStateToProps)(Index);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({fetchPaginatedArticles: fetchPaginatedArticles}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

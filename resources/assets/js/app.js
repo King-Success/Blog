@@ -16,19 +16,22 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from "react-dom";
 import {Provider} from 'react-redux';
+import reducers from './reducers'
 import {createStore, applyMiddleware} from 'redux';
 //import thunk from 'redux-thunk';
-//import promise from 'redux-promise';
+import ReduxPromise from 'redux-promise';
 //import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import App from './components/App';
 
-const store = createStore(
-    allReducers
-);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+
+// const store = createStore(
+//     allReducers
+// );
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={createStoreWithMiddleware(reducers)}>
         <App />
     </Provider>,
     document.getElementById('app')
