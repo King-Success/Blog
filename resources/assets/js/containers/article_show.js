@@ -14,7 +14,8 @@ class Index extends Component {
     render() {
         
         return (
-           <div>{this.props.selectedArticle.body}</div>
+        //    <div>{this.props.selectedArticle.body}</div>
+        <div>Hello world</div>
            
         );
     }
