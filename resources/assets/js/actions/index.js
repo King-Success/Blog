@@ -2,20 +2,23 @@
 import axios from 'axios';
 
 export const PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
+export const SELECTED_ARTICLE = 'SELECTED_ARTICLE'
 
-export const selectUser = (user) => {
-    console.log("You clicked on user: ", user.first);
-    return {
-        type: 'USER_SELECTED',
-        payload: user
-    }
-};
 
 export const fetchPaginatedArticles = () => {
     const request = axios.get('/api/articles/paginate');
 
     return {
-        type: 'PAGINATED_ARTICLES', 
+        type: PAGINATED_ARTICLES, 
         payload: request
     };
+}
+
+export const fetchSelectedArticle = (id) => {
+    const request = axios.get(`/api/articles/${id}`);
+
+    return {
+        type: SELECTED_ARTICLE, 
+        payload:request
+    }
 }

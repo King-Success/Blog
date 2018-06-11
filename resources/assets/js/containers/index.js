@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchPaginatedArticles } from '../actions/index';
+import { fetchSelectedArticle } from '../actions/index';
+
 
 /*
  * We need "if(!this.props.user)" because we set state to null by default
@@ -10,13 +12,17 @@ import { fetchPaginatedArticles } from '../actions/index';
 class Index extends Component {
     componentWillMount() {
         this.props.fetchPaginatedArticles();
-    }
+	}
+	
+	// componentDidMount() {
+	// 	this.props.fetchSelectedArticle();
+	// }
 
     mapArticles() {
 		return (
 			this.props.paginatedArticles.map( article => {
 				return (
-					<div key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
+					<div onClick={ () => this.props.fetchSelectedArticle(article.id) } key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
 							<article className="post post-1-1">
 								<div className="post-content with-background">
 									<h2 className="post-title"><a href="blog-single-post-sidebar-right.html">{ article.title }</a></h2>
@@ -37,9 +43,11 @@ class Index extends Component {
     // something to show for.
         if(!this.props.paginatedArticles) {
             return (
-                <div>Loading...</div>
+                <div></div>
             );
-        }
+		}
+		
+		
         
         return (
            <div className="wrapper reveal-side-navigation">
@@ -179,13 +187,17 @@ class Index extends Component {
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
+	// console.log(state);
     return {
         paginatedArticles: state.paginatedArticles.data
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchPaginatedArticles: fetchPaginatedArticles}, dispatch);
+	return bindActionCreators({
+		fetchPaginatedArticles: fetchPaginatedArticles,
+		fetchSelectedArticle: fetchSelectedArticle,
+	}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

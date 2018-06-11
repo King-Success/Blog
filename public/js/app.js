@@ -6951,28 +6951,31 @@ module.exports = getEventCharCode;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PAGINATED_ARTICLES; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return selectUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fetchPaginatedArticles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SELECTED_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchPaginatedArticles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return fetchSelectedArticle; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //This houses all of my action creators
 
 
 var PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
-
-var selectUser = function selectUser(user) {
-    console.log("You clicked on user: ", user.first);
-    return {
-        type: 'USER_SELECTED',
-        payload: user
-    };
-};
+var SELECTED_ARTICLE = 'SELECTED_ARTICLE';
 
 var fetchPaginatedArticles = function fetchPaginatedArticles() {
     var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/articles/paginate');
 
     return {
-        type: 'PAGINATED_ARTICLES',
+        type: PAGINATED_ARTICLES,
+        payload: request
+    };
+};
+
+var fetchSelectedArticle = function fetchSelectedArticle(id) {
+    var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/articles/' + id);
+
+    return {
+        type: SELECTED_ARTICLE,
         payload: request
     };
 };
@@ -11420,10 +11423,8 @@ module.exports = Symbol;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducer_users__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducer_active_user__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducer_paginated_articles__ = __webpack_require__(262);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducer_paginated_articles__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducer_selected_article__ = __webpack_require__(286);
 
 
 
@@ -11436,9 +11437,8 @@ module.exports = Symbol;
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
 
-    users: __WEBPACK_IMPORTED_MODULE_1__reducer_users__["a" /* default */],
-    activeUser: __WEBPACK_IMPORTED_MODULE_2__reducer_active_user__["a" /* default */],
-    paginatedArticles: __WEBPACK_IMPORTED_MODULE_3__reducer_paginated_articles__["a" /* default */]
+    paginatedArticles: __WEBPACK_IMPORTED_MODULE_1__reducer_paginated_articles__["a" /* default */],
+    selectedArticle: __WEBPACK_IMPORTED_MODULE_2__reducer_selected_article__["a" /* default */]
 
 });
 
@@ -56018,63 +56018,8 @@ module.exports = invariant;
 
 
 /***/ }),
-/* 260 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/*
- * The users reducer will always return an array of users no matter what
- * You need to return something, so if there are no users then just return an empty array
- * */
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-    return [{
-        id: 1,
-        first: "Bucky",
-        last: "Roberts",
-        age: 71,
-        description: "Bucky is a React developer and YouTuber",
-        thumbnail: "http://i.imgur.com/7yUvePI.jpg"
-    }, {
-        id: 2,
-        first: "Joby",
-        last: "Wasilenko",
-        age: 27,
-        description: "Joby loves the Packers, cheese, and turtles.",
-        thumbnail: "http://i.imgur.com/52xRlm8.png"
-    }, {
-        id: 3,
-        first: "Madison",
-        last: "Williams",
-        age: 24,
-        description: "Madi likes her dog but it is really annoying.",
-        thumbnail: "http://i.imgur.com/4EMtxHB.png"
-    }];
-});
-
-/***/ }),
-/* 261 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/*
- * All reducers get two parameters passed in, state and action that occurred
- *       > state isn't entire apps state, only the part of state that this reducer is responsible for
- * */
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var action = arguments[1];
-
-    switch (action.type) {
-        case 'USER_SELECTED':
-            return action.payload;
-            break;
-    }
-    return state;
-});
-
-/***/ }),
+/* 260 */,
+/* 261 */,
 /* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56084,24 +56029,18 @@ module.exports = invariant;
 var INITIAL_STATE = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-    var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+  var action = arguments[1];
 
-    // console.log(action);
 
-    // if(action.type === PAGINATED_ARTICLES ){
-    //     return action.payload.data;
-    // }else{
-    //     return INITIAL_STATE;
-    // }
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_index__["a" /* PAGINATED_ARTICLES */]:
+      return action.payload.data;
 
-    switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__actions_index__["a" /* PAGINATED_ARTICLES */]:
-            return action.payload.data;
-        default:
-            return state;
-    }
-    return state;
+    default:
+      return state;
+  }
+  return state;
 });
 
 /***/ }),
@@ -56668,11 +56607,7 @@ module.exports = isArray;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_user_list__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_user_detail__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_index__ = __webpack_require__(272);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_index__ = __webpack_require__(272);
 
 
 
@@ -56680,184 +56615,15 @@ var App = function App() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__containers_index__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__containers_index__["a" /* default */], null)
     );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (App);
 
 /***/ }),
-/* 270 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_index__ = __webpack_require__(55);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-var UserList = function (_Component) {
-    _inherits(UserList, _Component);
-
-    function UserList() {
-        _classCallCheck(this, UserList);
-
-        return _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).apply(this, arguments));
-    }
-
-    _createClass(UserList, [{
-        key: 'renderList',
-        value: function renderList() {
-            var _this2 = this;
-
-            return this.props.users.map(function (user) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'li',
-                    {
-                        key: user.id,
-                        onClick: function onClick() {
-                            return _this2.props.selectUser(user);
-                        }
-                    },
-                    user.first,
-                    ' ',
-                    user.last
-                );
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'ul',
-                null,
-                this.renderList()
-            );
-        }
-    }]);
-
-    return UserList;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-// Get apps state and pass it as props to UserList
-//      > whenever state changes, the UserList will automatically re-render
-
-
-function mapStateToProps(state) {
-    return {
-        users: state.users
-    };
-}
-
-// Get actions and pass them as props to to UserList
-//      > now UserList has this.props.selectUser
-function matchDispatchToProps(dispatch) {
-    return Object(__WEBPACK_IMPORTED_MODULE_1_redux__["bindActionCreators"])({ selectUser: __WEBPACK_IMPORTED_MODULE_3__actions_index__["c" /* selectUser */] }, dispatch);
-}
-
-// We don't want to return the plain UserList (component) anymore, we want to return the smart Container
-//      > UserList is now aware of state and actions
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(UserList));
-
-/***/ }),
-/* 271 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-/*
- * We need "if(!this.props.user)" because we set state to null by default
- * */
-
-var UserDetail = function (_Component) {
-    _inherits(UserDetail, _Component);
-
-    function UserDetail() {
-        _classCallCheck(this, UserDetail);
-
-        return _possibleConstructorReturn(this, (UserDetail.__proto__ || Object.getPrototypeOf(UserDetail)).apply(this, arguments));
-    }
-
-    _createClass(UserDetail, [{
-        key: 'render',
-        value: function render() {
-            if (!this.props.user) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    'Select a user...'
-                );
-            }
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.props.user.thumbnail }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h2',
-                    null,
-                    this.props.user.first,
-                    ' ',
-                    this.props.user.last
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h3',
-                    null,
-                    'Age: ',
-                    this.props.user.age
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h3',
-                    null,
-                    'Description: ',
-                    this.props.user.description
-                )
-            );
-        }
-    }]);
-
-    return UserDetail;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-// "state.activeUser" is set in reducers/index.js
-
-
-function mapStateToProps(state) {
-    return {
-        user: state.activeUser
-    };
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(UserDetail));
-
-/***/ }),
+/* 270 */,
+/* 271 */,
 /* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56875,6 +56641,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -56899,13 +56666,22 @@ var Index = function (_Component) {
 		value: function componentWillMount() {
 			this.props.fetchPaginatedArticles();
 		}
+
+		// componentDidMount() {
+		// 	this.props.fetchSelectedArticle();
+		// }
+
 	}, {
 		key: 'mapArticles',
 		value: function mapArticles() {
+			var _this2 = this;
+
 			return this.props.paginatedArticles.map(function (article) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
+					{ onClick: function onClick() {
+							return _this2.props.fetchSelectedArticle(article.id);
+						}, key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'article',
 						{ className: 'post post-1-1' },
@@ -56970,11 +56746,7 @@ var Index = function (_Component) {
 			// While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
 			// something to show for.
 			if (!this.props.paginatedArticles) {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					null,
-					'Loading...'
-				);
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
 			}
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57378,13 +57150,17 @@ var Index = function (_Component) {
 
 
 function mapStateToProps(state) {
+	// console.log(state);
 	return {
 		paginatedArticles: state.paginatedArticles.data
 	};
 }
 
 function mapDispatchToProps(dispatch) {
-	return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({ fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["b" /* fetchPaginatedArticles */] }, dispatch);
+	return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({
+		fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["c" /* fetchPaginatedArticles */],
+		fetchSelectedArticle: __WEBPACK_IMPORTED_MODULE_3__actions_index__["d" /* fetchSelectedArticle */]
+	}, dispatch);
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(Index));
@@ -57394,6 +57170,42 @@ function mapDispatchToProps(dispatch) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_index__ = __webpack_require__(55);
+
+var INITIAL_STATE = {};
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+  var action = arguments[1];
+
+  console.log(action);
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_index__["b" /* SELECTED_ARTICLE */]:
+      return action.payload.data;
+
+    default:
+      return state;
+  }
+  return state;
+});
 
 /***/ })
 /******/ ]);

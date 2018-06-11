@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
-import ActiveUserReducer from './reducer-active-user';
-import PaginatedArticlesReducer from './reducer_paginated_articles';
+import paginatedArticles from './reducer_paginated_articles';
+import selectedArticle from './reducer_selected_article';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -11,9 +10,8 @@ import PaginatedArticlesReducer from './reducer_paginated_articles';
 
 const allReducers = combineReducers({
     
-    users: UserReducer,
-    activeUser: ActiveUserReducer,
-    paginatedArticles: PaginatedArticlesReducer
+    paginatedArticles: paginatedArticles, 
+    selectedArticle: selectedArticle,
     
 
 });
