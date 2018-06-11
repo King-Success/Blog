@@ -1,9 +1,12 @@
 import React from 'react';
-import Articles from '../containers/index';
+import Articles from '../containers/posts_index';
+import Article from '../containers/post_show';
 
 const App = () => (
     <div>
-        <Articles />
+         <Articles /> 
+        <Article />
+
     </div>
 );
 
