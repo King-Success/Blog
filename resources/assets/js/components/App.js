@@ -1,6 +1,6 @@
 import React from 'react';
-import Articles from '../containers/posts_index';
-import Article from '../containers/post_show';
+import Articles from '../containers/articles_index';
+import Article from '../containers/article_show';
 
 const App = () => (
     <div>
