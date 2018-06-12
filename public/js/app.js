@@ -56745,9 +56745,7 @@ var Index = function (_Component) {
 			return this.props.paginatedArticles.map(function (article) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ onClick: function onClick() {
-							return _this2.props.fetchSelectedArticle(article.id);
-						}, key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
+					{ key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'article',
 						{ className: 'post post-1-1' },
@@ -56757,11 +56755,7 @@ var Index = function (_Component) {
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'h2',
 								{ className: 'post-title' },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'a',
-									{ href: 'blog-single-post-sidebar-right.html' },
-									article.title
-								)
+								article.title
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'div',
@@ -56798,7 +56792,9 @@ var Index = function (_Component) {
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								__WEBPACK_IMPORTED_MODULE_4_react_router__["Link"],
-								{ to: '/show', className: 'read-more' },
+								{ onClick: function onClick() {
+										return _this2.props.fetchSelectedArticle(article.id);
+									}, to: '/show', className: 'read-more' },
 								'Read More \u2192'
 							)
 						)
@@ -56812,7 +56808,11 @@ var Index = function (_Component) {
 			// While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
 			// something to show for.
 			if (!this.props.paginatedArticles) {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'column width-1 offset-6 content-inner blog-regular list' },
+					'Loading...'
+				);
 			}
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56839,16 +56839,7 @@ var Index = function (_Component) {
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'div',
 											{ className: 'logo-inner' },
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: 'index.html' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
-											),
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: 'index.html' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo.png', alt: 'Faulkner Logo' })
-											)
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
 										)
 									),
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56862,7 +56853,7 @@ var Index = function (_Component) {
 												null,
 												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 													'a',
-													{ href: 'index.html' },
+													{ href: '' },
 													'Demos'
 												)
 											)
@@ -57263,10 +57254,667 @@ var Index = function (_Component) {
     _createClass(Index, [{
         key: 'render',
         value: function render() {
+
+            // if(!this.props.props.selectedArticle.body) {
+            //     return (
+            //         <div>Loading...</div>
+            //     );
+            // }
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                this.props.selectedArticle.body
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'header',
+                    { className: 'header header-relative header-fixed-on-mobile nav-dark', 'data-bkg-threshold': '100', 'data-sticky-threshold': '0' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'header-inner' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'row nav-bar' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'column width-12 nav-bar-inner' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'logo' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'logo-inner' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'nav',
+                                    { className: 'navigation nav-block primary-navigation nav-right sub-menu-indicator' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'ul',
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'a',
+                                                { href: '' },
+                                                'Demos'
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'content clearfix' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'section-block clearfix pt-0 pb-0 bkg-grey-ultralight' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'column width-10 offset-1 content-inner blog-single-post' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'article',
+                                    { className: 'post' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'post-content with-background' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'h2',
+                                            { className: 'post-title center' },
+                                            'The key to building a prototyping tool for an ever-changing market'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'post-info center' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'span',
+                                                { className: 'post-date' },
+                                                '25 Aug 2015'
+                                            ),
+                                            ', in ',
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'span',
+                                                { className: 'post-category' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'a',
+                                                    { href: '#' },
+                                                    'Development'
+                                                )
+                                            ),
+                                            ', ',
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'span',
+                                                { className: 'post-tags' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'span',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#', className: 'post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white' },
+                                                        'Press Release'
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'post-media thumbnail' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/blog/regular/image-regular-3.jpg', alt: '' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'box xlarge full-width bkg-gradient-purple-haze color-white' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'blockquote',
+                                                { 'class': 'large' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'p',
+                                                    null,
+                                                    'Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations.'
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'cite',
+                                                    null,
+                                                    'Steve Jobs'
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'row' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-6' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'p',
+                                                    null,
+                                                    'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate.'
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-6' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'p',
+                                                    null,
+                                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non.'
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { href: '#', 'class': 'read-more' },
+                                            'Read More \u2192'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'post-author' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'row' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { 'class': 'column width-12' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'author-bio' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'div',
+                                                            { 'class': 'author-avatar clear-float' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/blog/bio-avatar.jpg', alt: 'Avatar' })
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'div',
+                                                            { 'class': 'author-content' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'div',
+                                                                { 'class': 'row' },
+                                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                    'div',
+                                                                    { 'class': 'column width-12' },
+                                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                        'div',
+                                                                        { 'class': 'name' },
+                                                                        'by ',
+                                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                            'a',
+                                                                            { href: '#' },
+                                                                            'John Adams'
+                                                                        )
+                                                                    ),
+                                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                        'p',
+                                                                        { 'class': 'author-title' },
+                                                                        'WordPress Evangelist, JS Guru and Beer Lover'
+                                                                    )
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { 'class': 'post-comments with-background' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h3',
+                                        { 'class': 'comments-title' },
+                                        '3 Comments'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { 'class': 'comments' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'ul',
+                                            { 'class': 'comment-list' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'li',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'article',
+                                                    { 'class': 'comment' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'user-avatar' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/blog/comment-avatar.jpg', alt: 'Avatar' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'comment-content' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'h5',
+                                                            { 'class': 'name' },
+                                                            'John Andersson'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'div',
+                                                            { 'class': 'comment-meta' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'post-date' },
+                                                                '17 Jul 2015'
+                                                            ),
+                                                            '/',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'a',
+                                                                { href: '#', 'class': 'comment-reply-link' },
+                                                                'Reply'
+                                                            )
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'p',
+                                                            null,
+                                                            'Whistler Mountain is a mountain in the Fitzsimmons Range of the Pacific Ranges of the Coast Mountains, located on the northwestern.'
+                                                        )
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'ul',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'li',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'article',
+                                                            { 'class': 'comment' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'div',
+                                                                { 'class': 'user-avatar' },
+                                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/blog/comment-avatar-3.jpg', alt: 'Avatar' })
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'div',
+                                                                { 'class': 'comment-content' },
+                                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                    'h5',
+                                                                    { 'class': 'name' },
+                                                                    'Emma Courtier'
+                                                                ),
+                                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                    'div',
+                                                                    { 'class': 'comment-meta' },
+                                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                        'span',
+                                                                        { 'class': 'post-date' },
+                                                                        '23 Jul 2015'
+                                                                    ),
+                                                                    '/',
+                                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                        'a',
+                                                                        { href: '#', 'class': 'comment-reply-link' },
+                                                                        'Reply'
+                                                                    )
+                                                                ),
+                                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                    'p',
+                                                                    null,
+                                                                    'Whistler Mountain is a mountain in the Fitzsimmons Range of the Pacific Ranges of the Coast Mountains, located on the northwestern.'
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'li',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'article',
+                                                    { 'class': 'comment' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'user-avatar' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/blog/comment-avatar-2.jpg', alt: 'Avatar' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'comment-content' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'h5',
+                                                            { 'class': 'name' },
+                                                            'Michael Cunningham'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'div',
+                                                            { 'class': 'comment-meta' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'post-date' },
+                                                                '24 Jul 2015'
+                                                            ),
+                                                            '/',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'a',
+                                                                { href: '#', 'class': 'comment-reply-link' },
+                                                                'Reply'
+                                                            )
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'p',
+                                                            null,
+                                                            'Whistler Mountain is a mountain in the Fitzsimmons Range of the Pacific Ranges of the Coast Mountains, located on the northwestern.'
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { 'class': 'post-comment-respond with-background' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h3',
+                                        { 'class': 'reply-title' },
+                                        'Leave a Comment'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'form',
+                                        { 'class': 'comment-form', action: '#', method: 'post', novalidate: true },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'row' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-8' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'fname', 'class': 'form-name form-element rounded', placeholder: 'Name*', tabindex: '1', required: true })
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-8' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'email', name: 'email', 'class': 'form-email form-element rounded', placeholder: 'Email*', tabindex: '3', required: true })
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-8' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'website', 'class': 'form-website form-element rounded', placeholder: 'Website', tabindex: '4' })
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-6' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'honeypot', 'class': 'form-honeypot form-element rounded' })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'row' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'column width-12' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { name: 'message', 'class': 'form-message form-element rounded', placeholder: 'Message*', tabindex: '5', required: true }),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Post Comment', 'class': 'form-submit button rounded medium bkg-green bkg-hover-green color-white color-hover-white no-margin-bottom' })
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'footer',
+                    { className: 'footer footer-light with-border' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'footer-top' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'row flex' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'column width-9' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'row two-columns-on-tablet' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'column width-3' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'widget' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h3',
+                                                { className: 'widget-title mb-30' },
+                                                'Product'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'ul',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'About us'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Careers'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Press'
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'column width-3' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'widget' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h3',
+                                                { className: 'widget-title mb-30' },
+                                                'Company'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'ul',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Overview'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Features'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Pricing'
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'column width-3' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'widget' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h3',
+                                                { className: 'widget-title mb-30' },
+                                                'Resources'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'ul',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'News'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Documentation'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Faq'
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'column width-3' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'widget' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h3',
+                                                { className: 'widget-title mb-30' },
+                                                'Contact'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'ul',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Email us'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Tweet Faulkner'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'li',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        { href: '#' },
+                                                        'Visit the office'
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'column width-3' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'widget right left-on-mobile' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'footer-logo' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { href: 'index.html' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'images/logo-dark.png', alt: 'Faulkner Logo' })
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'footer-bottom' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'column width-12' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'footer-bottom-inner' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'p',
+                                        { className: 'copyright pull-left clear-float-on-mobile' },
+                                        '\xA9 ThemeMountain. All Rights Reserved.'
+                                    ),
+                                    ' ',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'scroll-to-top pull-right clear-on-mobile', 'data-no-hide': true },
+                                        'Back Top'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
             );
         }
     }]);

@@ -20,16 +20,16 @@ class Index extends Component {
 		return (
 			this.props.paginatedArticles.map( article => {
 				return (
-					<div onClick={ () => this.props.fetchSelectedArticle(article.id) } key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
-							<article className="post post-1-1">
-								<div className="post-content with-background">
-									<h2 className="post-title"><a href="blog-single-post-sidebar-right.html">{ article.title }</a></h2>
+					<div key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
+						<article className="post post-1-1">
+							<div className="post-content with-background">
+								<h2 className="post-title">{ article.title }</h2>
 									<div className="post-info">
 										<span className="post-date">{ article.created_at}</span>, in <span className="post-category"><a href="#">{ article.category.name }</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">Review</a></span></span>
 									</div>
-									<Link to="/show" className="read-more">Read More →</Link>
-								</div>
-							</article>
+								<Link onClick={ () => this.props.fetchSelectedArticle(article.id) } to="/show" className="read-more">Read More →</Link>
+							</div>
+						</article>
 					</div>
 				);
 			})
@@ -41,7 +41,7 @@ class Index extends Component {
     // something to show for.
         if(!this.props.paginatedArticles) {
             return (
-                <div></div>
+                <div className="column width-1 offset-6 content-inner blog-regular list">Loading...</div>
             );
 		}
 		
@@ -58,14 +58,14 @@ class Index extends Component {
 									<div className="column width-12 nav-bar-inner">
 										<div className="logo">
 											<div className="logo-inner">
-												<a href="index.html"><img src="images/logo-dark.png" alt="Faulkner Logo" /></a>
-												<a href="index.html"><img src="images/logo.png" alt="Faulkner Logo" /></a>
+												<img src="images/logo-dark.png" alt="Faulkner Logo" />
+												{/* <img src="images/logo.png" alt="Faulkner Logo" /> */}
 											</div>
 										</div>
 										<nav className="navigation nav-block primary-navigation nav-right sub-menu-indicator">
 											<ul>
 												<li>
-													<a href="index.html">Demos</a>
+													<a href="">Demos</a>
 												</li>
 											</ul>
 										</nav>

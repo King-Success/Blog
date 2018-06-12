@@ -22,6 +22,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CHind+Madurai:400,500&amp;subset=latin-ext" rel="stylesheet">
 	
 	<!-- Css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/core.min.css" />
 	<link rel="stylesheet" href="css/skin.css" />
 
@@ -31,7 +32,7 @@
 
 </head>
 <body class="shop blog">
-        <div id="app"></div>
+		<div id="app"></div>
     <script src="{{ mix('js/app.js') }}" ></script>
     <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3JCAhNj6tVAO_LSb8M-AzMlidiT-RPAs"></script>
