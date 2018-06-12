@@ -56702,6 +56702,8 @@ var INITIAL_STATE = {};
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_index__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router__ = __webpack_require__(317);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_router__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56709,6 +56711,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -56734,11 +56737,6 @@ var Index = function (_Component) {
 		value: function componentWillMount() {
 			this.props.fetchPaginatedArticles();
 		}
-
-		// componentDidMount() {
-		// 	this.props.fetchSelectedArticle();
-		// }
-
 	}, {
 		key: 'mapArticles',
 		value: function mapArticles() {
@@ -56799,8 +56797,8 @@ var Index = function (_Component) {
 								)
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'a',
-								{ href: '#', className: 'read-more' },
+								__WEBPACK_IMPORTED_MODULE_4_react_router__["Link"],
+								{ to: '/show', className: 'read-more' },
 								'Read More \u2192'
 							)
 						)
@@ -57252,14 +57250,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-// import {bindActionCreators} from 'redux';
-// import { fetchPaginatedArticles } from '../actions/index';
-// import { fetchSelectedArticle } from '../actions/index';
-
-
-/*
- * We need "if(!this.props.paginatedArticles)" because we set state to null by default
- * */
 
 var Index = function (_Component) {
     _inherits(Index, _Component);
@@ -57273,14 +57263,10 @@ var Index = function (_Component) {
     _createClass(Index, [{
         key: 'render',
         value: function render() {
-
-            return (
-                //    <div>{this.props.selectedArticle.body}</div>
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    'Hello world'
-                )
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                this.props.selectedArticle.body
             );
         }
     }]);
@@ -57292,18 +57278,10 @@ var Index = function (_Component) {
 
 
 function mapStateToProps(state) {
-    // console.log(state);
     return {
         selectedArticle: state.selectedArticle
     };
 }
-
-// function mapDispatchToProps(dispatch) {
-// 	return bindActionCreators({
-// 		fetchPaginatedArticles: fetchPaginatedArticles,
-// 		fetchSelectedArticle: fetchSelectedArticle,
-// 	}, dispatch);
-// }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(Index));
 

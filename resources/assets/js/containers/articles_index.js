@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchPaginatedArticles } from '../actions/index';
 import { fetchSelectedArticle } from '../actions/index';
+import { Link } from 'react-router';
 
 
 /*
@@ -14,9 +15,6 @@ class Index extends Component {
         this.props.fetchPaginatedArticles();
 	}
 	
-	// componentDidMount() {
-	// 	this.props.fetchSelectedArticle();
-	// }
 
     mapArticles() {
 		return (
@@ -29,7 +27,7 @@ class Index extends Component {
 									<div className="post-info">
 										<span className="post-date">{ article.created_at}</span>, in <span className="post-category"><a href="#">{ article.category.name }</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">Review</a></span></span>
 									</div>
-									<a href="#" className="read-more">Read More →</a>
+									<Link to="/show" className="read-more">Read More →</Link>
 								</div>
 							</article>
 					</div>
