@@ -145,7 +145,7 @@ class Index extends Component {
 								</div>
 							</div>
 
-                                <div className="post-comment-respond with-background">
+                                <div className="post-comment-respond with-background pad-comment">
 								<h3 className="reply-title">Leave a Comment</h3>
 								<form className="comment-form" action="#" method="post" novalidate>
 									<div className="row">
@@ -180,7 +180,7 @@ class Index extends Component {
                 {/* Content End */}
 
                 {/* Footer  */}
-                {/* <footer className="footer footer-light with-border">
+                 <footer className="footer footer-light with-border">
 				<div className="footer-top">
 					<div className="row flex">
 						<div className="column width-9">
@@ -245,7 +245,7 @@ class Index extends Component {
 						</div>
 					</div>
 				</div>
-			</footer> */}
+			</footer> 
                  {/* Footer End  */}
             </div>
            

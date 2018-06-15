@@ -26,6 +26,9 @@
 	<link rel="stylesheet" href="css/core.min.css" />
 	<link rel="stylesheet" href="css/skin.css" />
 
+	<!-- Custom Css file -->
+	<link rel="stylesheet" href="css/custom.css" />
+	
 	<!--[if lt IE 9]>
     	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -37,5 +40,7 @@
     <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3JCAhNj6tVAO_LSb8M-AzMlidiT-RPAs"></script>
 	<script src="{{ URL::asset('js/timber.master.min.js') }}"></script>
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=detrtfrqp9hlzg92fhiins01qj2rwiwcbnc6ikf9ves2dhau"></script>
+  	<script>tinyMCE.init({ mode : "specific_textareas", editor_selector : "mceEditor" });</script>
 </body>
 </html>
