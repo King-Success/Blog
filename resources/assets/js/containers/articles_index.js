@@ -20,17 +20,20 @@ class Index extends Component {
 		return (
 			this.props.paginatedArticles.map( article => {
 				return (
+					
 					<div key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
+						<Link onClick={ () => this.props.fetchSelectedArticle(article.id) } to="/show" >
 						<article className="post post-1-1">
 							<div className="post-content with-background">
 								<h2 className="post-title">{ article.title }</h2>
 									<div className="post-info">
-										<span className="post-date">{ article.created_at}</span>, in <span className="post-category"><a href="#">{ article.category.name }</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">Review</a></span></span>
+										<span className="post-date">{ article.created_at}</span>, in <span className="post-category"><a href="#">{ article.category.name }</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">{ article.category.name }</a></span></span>
 									</div>
-								<Link onClick={ () => this.props.fetchSelectedArticle(article.id) } to="/show" className="read-more">Read More →</Link>
 							</div>
 						</article>
+						</Link>
 					</div>
+					
 				);
 			})
 		);

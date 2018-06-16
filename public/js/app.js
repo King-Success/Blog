@@ -61702,55 +61702,54 @@ var Index = function (_Component) {
 					'div',
 					{ key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'article',
-						{ className: 'post post-1-1' },
+						__WEBPACK_IMPORTED_MODULE_4_react_router__["Link"],
+						{ onClick: function onClick() {
+								return _this2.props.fetchSelectedArticle(article.id);
+							}, to: '/show' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'post-content with-background' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'h2',
-								{ className: 'post-title' },
-								article.title
-							),
+							'article',
+							{ className: 'post post-1-1' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'div',
-								{ className: 'post-info' },
+								{ className: 'post-content with-background' },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'span',
-									{ className: 'post-date' },
-									article.created_at
+									'h2',
+									{ className: 'post-title' },
+									article.title
 								),
-								', in ',
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'span',
-									{ className: 'post-category' },
-									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'a',
-										{ href: '#' },
-										article.category.name
-									)
-								),
-								', ',
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'span',
-									{ className: 'post-tags' },
+									'div',
+									{ className: 'post-info' },
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'span',
-										null,
+										{ className: 'post-date' },
+										article.created_at
+									),
+									', in ',
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'span',
+										{ className: 'post-category' },
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'a',
-											{ href: '#', className: 'post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white' },
-											'Review'
+											{ href: '#' },
+											article.category.name
+										)
+									),
+									', ',
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'span',
+										{ className: 'post-tags' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'span',
+											null,
+											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'a',
+												{ href: '#', className: 'post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white' },
+												article.category.name
+											)
 										)
 									)
 								)
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								__WEBPACK_IMPORTED_MODULE_4_react_router__["Link"],
-								{ onClick: function onClick() {
-										return _this2.props.fetchSelectedArticle(article.id);
-									}, to: '/show', className: 'read-more' },
-								'Read More \u2192'
 							)
 						)
 					)
@@ -62282,27 +62281,11 @@ var Index = function (_Component) {
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'h2',
 											{ className: 'post-title center' },
-											'The key to building a prototyping tool for an ever-changing market'
+											this.props.selectedArticle.title
 										),
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'div',
 											{ className: 'post-info center' },
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'span',
-												{ className: 'post-date' },
-												'25 Aug 2015'
-											),
-											', in ',
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'span',
-												{ className: 'post-category' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-													'a',
-													{ href: '#' },
-													'Development'
-												)
-											),
-											', ',
 											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 												'span',
 												{ className: 'post-tags' },
@@ -62312,7 +62295,7 @@ var Index = function (_Component) {
 													__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 														'a',
 														{ href: '#', className: 'post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white' },
-														'Press Release'
+														this.props.selectedArticle.category
 													)
 												)
 											)
@@ -62325,62 +62308,7 @@ var Index = function (_Component) {
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'p',
 											null,
-											'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.'
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'div',
-											{ className: 'box xlarge full-width bkg-gradient-purple-haze color-white' },
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'blockquote',
-												{ className: 'large' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-													'p',
-													null,
-													'Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations.'
-												),
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-													'cite',
-													null,
-													'Steve Jobs'
-												)
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'p',
-											null,
-											'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla.'
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'div',
-											{ className: 'row' },
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'div',
-												{ className: 'column width-6' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-													'p',
-													null,
-													'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate.'
-												)
-											),
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'div',
-												{ className: 'column width-6' },
-												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-													'p',
-													null,
-													'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non.'
-												)
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'p',
-											null,
-											'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.'
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'a',
-											{ href: '#', className: 'read-more' },
-											'Read More \u2192'
+											this.props.selectedArticle.body
 										),
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'div',
@@ -62881,6 +62809,7 @@ var Index = function (_Component) {
 
 
 function mapStateToProps(state) {
+	console.log(state.selectedArticle);
 	return {
 		selectedArticle: state.selectedArticle
 	};

@@ -45,31 +45,17 @@ class Index extends Component {
                             <div className="column width-10 offset-1 content-inner blog-single-post">
                                 <article className="post">
                                     <div className="post-content with-background">
-                                        <h2 className="post-title center">The key to building a prototyping tool for an ever-changing market</h2>
+                                        <h2 className="post-title center">{ this.props.selectedArticle.title }</h2>
                                         <div className="post-info center">
-                                            <span className="post-date">25 Aug 2015</span>, in <span className="post-category"><a href="#">Development</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white">Press Release</a></span></span>
+											<span className="post-tags"><span><a href="#" className="post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white">{ this.props.selectedArticle.category }</a></span></span>
                                         </div>
                                         <div className="post-media thumbnail">
                                             <img src="images/blog/regular/image-regular-3.jpg" alt=""/>
                                         </div>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                        <div className="box xlarge full-width bkg-gradient-purple-haze color-white">
-                                            <blockquote className="large">
-                                                <p>Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations.</p>
-                                                <cite>Steve Jobs</cite>
-                                            </blockquote>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla.</p>
-                                        <div className="row">
-                                            <div className="column width-6">
-                                                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate.</p>
-                                            </div>
-                                            <div className="column width-6">
-                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non.</p>
-                                            </div>
-                                        </div>
-                                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.</p>
-                                        <a href="#" className="read-more">Read More →</a>
+
+                                        <p>
+											{ this.props.selectedArticle.body }
+										</p>
                                         <div className="post-author">
                                             <div className="row">
                                                 <div className="column width-12">
@@ -255,6 +241,7 @@ class Index extends Component {
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
+	console.log(state.selectedArticle)
     return {
         selectedArticle: state.selectedArticle
     };

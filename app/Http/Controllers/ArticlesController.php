@@ -52,7 +52,23 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        return $article;
+        // return $article->load('category');
+        // This blunder is simply because react refuses to access property of object in object contained inside this.props
+        $category = $article->category()->get();
+        $category[0]->name;
+        $article = [
+             "id" => $article->id,
+            "title" => $article->title, 
+            "body" => $article->body, 
+            "category" => $category[0]->name,
+            // "created_at" => $article->created_at, 
+            // "updated_at" => $article->updated_at
+        ];
+        
+
+        // $article = response()->json($article, 200);
+           return $article;
+        
         
     }
 
