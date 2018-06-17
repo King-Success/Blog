@@ -14,6 +14,8 @@ class Article extends Model
 
     protected $fillable = ['category_Id', 'title', 'body'];
 
+    // protected $dateFormat = 'd.m.Y';
+
 
     public function category() {
         return $this->belongsTo('App\Category');

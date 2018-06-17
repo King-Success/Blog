@@ -27,7 +27,7 @@ class Index extends Component {
 							<div className="post-content with-background">
 								<h2 className="post-title">{ article.title }</h2>
 									<div className="post-info">
-										<span className="post-date">{ article.created_at}</span>, in <span className="post-category"><a href="#">{ article.category.name }</a></span>, <span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">{ article.category.name }</a></span></span>
+										<span className="post-tags"><span><a href="#" className="post-tag label small rounded bkg-charcoal color-white bkg-hover-charcoal bkg-hover-white">{ article.category.name }</a></span></span><span className="post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white">{ article.created_at}</span>
 									</div>
 							</div>
 						</article>

@@ -61722,22 +61722,6 @@ var Index = function (_Component) {
 									{ className: 'post-info' },
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'span',
-										{ className: 'post-date' },
-										article.created_at
-									),
-									', in ',
-									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'span',
-										{ className: 'post-category' },
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'a',
-											{ href: '#' },
-											article.category.name
-										)
-									),
-									', ',
-									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'span',
 										{ className: 'post-tags' },
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'span',
@@ -61748,6 +61732,11 @@ var Index = function (_Component) {
 												article.category.name
 											)
 										)
+									),
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'span',
+										{ className: 'post-tag label small rounded border-pink color-pink bkg-hover-pink bkg-hover-white' },
+										article.created_at
 									)
 								)
 							)

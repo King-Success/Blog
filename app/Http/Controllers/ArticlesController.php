@@ -61,7 +61,7 @@ class ArticlesController extends Controller
             "title" => $article->title, 
             "body" => $article->body, 
             "category" => $category[0]->name,
-            // "created_at" => $article->created_at, 
+            // "created_at" => $article->created_at->format('M d, Y'), 
             // "updated_at" => $article->updated_at
         ];
         
