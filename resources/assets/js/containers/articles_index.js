@@ -12,13 +12,14 @@ import { Link } from 'react-router';
 
 class Index extends Component {
     componentWillMount() {
-        this.props.fetchPaginatedArticles();
+		this.props.fetchPaginatedArticles();
+		// this.componentDidCatch.getPayload();
 	}
 	
 
     mapArticles() {
 		return (
-			this.props.paginatedArticles.map( article => {
+			this.props.paginatedArticles.data.map( article => {
 				return (
 					
 					<div key={ article.id } className="column width-10 offset-1 content-inner blog-regular list">
@@ -39,9 +40,6 @@ class Index extends Component {
 		);
 	}
 
-	getNextPage() {
-		this.props.fetchNextPaginatedArticles();
-	}
 
 
 
@@ -101,13 +99,11 @@ class Index extends Component {
 								<div className="row">
 									<div className="column width-10 offset-1">
 										<ul>
-											<li><a className="pagination-previous icon-left-open" href="#">Prev</a></li>
-											<li><a className="current" href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li><a className="pagination-next disabled" href="#">Next</a></li>
+											{ this.props.paginatedArticles.prev_page_url ? <li><a onClick={ () => {this.props.fetchPaginatedArticles(this.props.paginatedArticles.prev_page_url)}} className="pagination-previous icon-left-open" href="#" >Prev</a></li> : <li pagination-previous icon-left-open>Page 1 of {this.props.paginated}</li> }
+
+											
+											
+											<li><a onClick={ () => {this.props.fetchPaginatedArticles(this.props.paginatedArticles.next_page_url)}} className="pagination-next icon-left-open" href="#">Older</a></li>
 										</ul>
 									</div>
 								</div>
@@ -194,7 +190,7 @@ class Index extends Component {
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
-	// console.log(state);
+	console.log(state);
     return {
         paginatedArticles: state.paginatedArticles.data
     };
@@ -204,7 +200,6 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		fetchPaginatedArticles: fetchPaginatedArticles,
 		fetchSelectedArticle: fetchSelectedArticle,
-		fetchNextPaginatedArticles: fetchNextPaginatedArticles,
 	}, dispatch);
 }
 

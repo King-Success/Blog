@@ -2,11 +2,12 @@
 import axios from 'axios';
 
 export const PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
-export const SELECTED_ARTICLE = 'SELECTED_ARTICLE'
+export const SELECTED_ARTICLE = 'SELECTED_ARTICLE';
+// export const NEXT_PAGINATED_ARTICLES = 'NEXT_PAGINATED_ARTICLES'
+ 
 
-
-export const fetchPaginatedArticles = () => {
-    const request = axios.get('/api/articles/paginate');
+export const fetchPaginatedArticles = (url = '/api/articles/paginate') => {
+    const request = axios.get(url);
 
     return {
         type: PAGINATED_ARTICLES, 
@@ -22,3 +23,5 @@ export const fetchSelectedArticle = (id) => {
         payload:request
     }
 }
+
+

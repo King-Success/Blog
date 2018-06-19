@@ -5649,9 +5649,13 @@ if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCr
 
 var PAGINATED_ARTICLES = 'PAGINATED_ARTICLES';
 var SELECTED_ARTICLE = 'SELECTED_ARTICLE';
+// export const NEXT_PAGINATED_ARTICLES = 'NEXT_PAGINATED_ARTICLES'
+
 
 var fetchPaginatedArticles = function fetchPaginatedArticles() {
-    var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/articles/paginate');
+    var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/api/articles/paginate';
+
+    var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url);
 
     return {
         type: PAGINATED_ARTICLES,
@@ -58769,6 +58773,8 @@ module.exports = isObjectLike;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_index__ = __webpack_require__(44);
 
+//Thou shalt not be confussed again, the app state is automatically passed, in case it isnt (it doesnt exist), this
+//empty one is used
 var INITIAL_STATE = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
@@ -58778,7 +58784,7 @@ var INITIAL_STATE = {};
 
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions_index__["a" /* PAGINATED_ARTICLES */]:
-      return action.payload.data;
+      return action.payload;
 
     default:
       return state;
@@ -58793,6 +58799,8 @@ var INITIAL_STATE = {};
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_index__ = __webpack_require__(44);
 
+//Thou shalt not be confussed again, the app state is automatically passed, in case it isnt (it doesnt exist), this
+//empty one is used
 var INITIAL_STATE = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
@@ -61691,13 +61699,14 @@ var Index = function (_Component) {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.props.fetchPaginatedArticles();
+			// this.componentDidCatch.getPayload();
 		}
 	}, {
 		key: 'mapArticles',
 		value: function mapArticles() {
 			var _this2 = this;
 
-			return this.props.paginatedArticles.map(function (article) {
+			return this.props.paginatedArticles.data.map(function (article) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ key: article.id, className: 'column width-10 offset-1 content-inner blog-regular list' },
@@ -61746,13 +61755,10 @@ var Index = function (_Component) {
 			});
 		}
 	}, {
-		key: 'getNextPage',
-		value: function getNextPage() {
-			this.props.fetchNextPaginatedArticles();
-		}
-	}, {
 		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
 			// While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
 			// something to show for.
 			if (!this.props.paginatedArticles) {
@@ -61835,67 +61841,30 @@ var Index = function (_Component) {
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'ul',
 										null,
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										this.props.paginatedArticles.prev_page_url ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'li',
 											null,
 											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 												'a',
-												{ className: 'pagination-previous icon-left-open', href: '#' },
+												{ onClick: function onClick() {
+														_this3.props.fetchPaginatedArticles(_this3.props.paginatedArticles.prev_page_url);
+													}, className: 'pagination-previous icon-left-open', href: '#' },
 												'Prev'
 											)
+										) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'li',
+											{ 'pagination-previous': true, 'icon-left-open': true },
+											'Page 1 of '
 										),
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'li',
 											null,
 											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 												'a',
-												{ className: 'current', href: '#' },
-												'1'
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'li',
-											null,
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: '#' },
-												'2'
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'li',
-											null,
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: '#' },
-												'3'
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'li',
-											null,
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: '#' },
-												'4'
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'li',
-											null,
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ href: '#' },
-												'5'
-											)
-										),
-										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-											'li',
-											null,
-											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-												'a',
-												{ className: 'pagination-next disabled', href: '#' },
-												'Next'
+												{ onClick: function onClick() {
+														_this3.props.fetchPaginatedArticles(_this3.props.paginatedArticles.next_page_url);
+													}, className: 'pagination-next icon-left-open', href: '#' },
+												'Older'
 											)
 										)
 									)
@@ -62155,7 +62124,7 @@ var Index = function (_Component) {
 
 
 function mapStateToProps(state) {
-	// console.log(state);
+	console.log(state);
 	return {
 		paginatedArticles: state.paginatedArticles.data
 	};
@@ -62164,8 +62133,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({
 		fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["c" /* fetchPaginatedArticles */],
-		fetchSelectedArticle: __WEBPACK_IMPORTED_MODULE_3__actions_index__["d" /* fetchSelectedArticle */],
-		fetchNextPaginatedArticles: fetchNextPaginatedArticles
+		fetchSelectedArticle: __WEBPACK_IMPORTED_MODULE_3__actions_index__["d" /* fetchSelectedArticle */]
 	}, dispatch);
 }
 
