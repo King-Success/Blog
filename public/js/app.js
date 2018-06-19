@@ -61746,6 +61746,11 @@ var Index = function (_Component) {
 			});
 		}
 	}, {
+		key: 'getNextPage',
+		value: function getNextPage() {
+			this.props.fetchNextPaginatedArticles();
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			// While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
@@ -61836,7 +61841,7 @@ var Index = function (_Component) {
 											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 												'a',
 												{ className: 'pagination-previous icon-left-open', href: '#' },
-												'Older'
+												'Prev'
 											)
 										),
 										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -61890,7 +61895,7 @@ var Index = function (_Component) {
 											__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 												'a',
 												{ className: 'pagination-next disabled', href: '#' },
-												'Newer'
+												'Next'
 											)
 										)
 									)

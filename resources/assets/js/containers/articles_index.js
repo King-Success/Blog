@@ -39,6 +39,12 @@ class Index extends Component {
 		);
 	}
 
+	getNextPage() {
+		this.props.fetchNextPaginatedArticles();
+	}
+
+
+
     render() {
     // While component mounts, this.props.paginatedArticles is null, so this if block catches that until there is 
     // something to show for.
@@ -95,13 +101,13 @@ class Index extends Component {
 								<div className="row">
 									<div className="column width-10 offset-1">
 										<ul>
-											<li><a className="pagination-previous icon-left-open" href="#">Older</a></li>
+											<li><a className="pagination-previous icon-left-open" href="#">Prev</a></li>
 											<li><a className="current" href="#">1</a></li>
 											<li><a href="#">2</a></li>
 											<li><a href="#">3</a></li>
 											<li><a href="#">4</a></li>
 											<li><a href="#">5</a></li>
-											<li><a className="pagination-next disabled" href="#">Newer</a></li>
+											<li><a className="pagination-next disabled" href="#">Next</a></li>
 										</ul>
 									</div>
 								</div>
