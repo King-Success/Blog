@@ -99,7 +99,7 @@ class Index extends Component {
 								<div className="row">
 									<div className="column width-10 offset-1">
 										<ul>
-											{ this.props.paginatedArticles.prev_page_url ? <li><a onClick={ () => {this.props.fetchPaginatedArticles(this.props.paginatedArticles.prev_page_url)}} className="pagination-previous icon-left-open" href="#" >Prev</a></li> : <li pagination-previous icon-left-open>Page 1 of {this.props.paginated}</li> }
+											{ this.props.paginatedArticles.prev_page_url ? <li><a onClick={ () => {this.props.fetchPaginatedArticles(this.props.paginatedArticles.prev_page_url)}} className="pagination-previous icon-left-open" href="#" >Prev</a></li> : <li pagination-previous icon-left-open>Page 1 of {this.props.paginatedArticles.last_page}</li> }
 
 											
 											
