@@ -62164,7 +62164,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])({
 		fetchPaginatedArticles: __WEBPACK_IMPORTED_MODULE_3__actions_index__["c" /* fetchPaginatedArticles */],
-		fetchSelectedArticle: __WEBPACK_IMPORTED_MODULE_3__actions_index__["d" /* fetchSelectedArticle */]
+		fetchSelectedArticle: __WEBPACK_IMPORTED_MODULE_3__actions_index__["d" /* fetchSelectedArticle */],
+		fetchNextPaginatedArticles: fetchNextPaginatedArticles
 	}, dispatch);
 }
 

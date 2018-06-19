@@ -204,6 +204,7 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		fetchPaginatedArticles: fetchPaginatedArticles,
 		fetchSelectedArticle: fetchSelectedArticle,
+		fetchNextPaginatedArticles: fetchNextPaginatedArticles,
 	}, dispatch);
 }
 
